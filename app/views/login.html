@@ -1,0 +1,13 @@
+<div class="jumbotron container-fluid">
+  <form ng-submit="submit()" name="register" class="form-signin" novalidate="">
+    <h2 class="form-signin-heading text-muted">login</h2>
+    <input type="email" name="email" ng-model="email" class="form-control" placeholder="Email address" required="" autofocus="">
+    <p class="help-block" ng-show="register.email.$dirty && register.email.$invalid">Please enter proper email.</p>
+    <input name="password" type="password" ng-model="password" class="form-control" placeholder="Password" required>
+    <button ng-disabled="register.$invalid"  class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    <br/>
+    <a class="text-muted pull-right" ui-sref="register">create account </a>
+    <a class="text-muted pull-left" ui-sref="forgotpwd">forgot password? </a>
+  </form>
+</div>
+

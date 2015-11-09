@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area">
+        <div class="status-upload">
+          <form ng-submit="submit()" name="post" >
+            <textarea placeholder="write something nice :)"  name="content" ng-model="content" ></textarea>
+            <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i>Post</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+ <div ng-repeat="post in posts">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="[ panel panel-default ] panel-google-plus">
+        <div class="panel-heading">
+          <h3>{{post.author}}</h3>
+          <h5><span> {{post.postedon}}</span> </h5>
+        </div>
+        <div class="panel-body">
+          <p>{{post.content}}</p>
+        </div>
+        <div class="panel-footer">
+          <div ng-repeat="comment in post.comments">
+            <div class="panel-heading">
+              <h3>{{comment.author}}</h3>
+            </div>
+            <div class="panel-body">
+              <p>{{comment.text}}</p>
+            </div>
+          </div>
+          <button type="button" class="[ btn btn-default ]">
+            <span class="[ glyphicon glyphicon-share-alt ]"></span>
+          </button>
+          <div class="panel-google-plus-textarea">
+          <textarea  placeholder="add a comment"></textarea>
+          </div>
+        </div>
+      </div>
+      </div>
+   </div>
+ </div>
+</div>
