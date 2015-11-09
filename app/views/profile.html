@@ -1,0 +1,12 @@
+<div class="jumbotron container-fluid">
+  <form ng-submit="update()" name="profile" class="form-signin" novalidate="">
+    <h2 class="form-signin-heading text-muted">profile</h2>
+    <input type="text" name="username" ng-model="username" class="form-control" placeholder="username" required="" autofocus="">
+    <input type="email" name="email" ng-model="email" class="form-control" placeholder="Email address" required="" autofocus="">
+    <p class="help-block" ng-show="profile.email.$dirty && profile.email.$invalid">Please enter proper email.</p>
+    <!--<input name="password" type="password" ng-model="password" class="form-control" placeholder="Password">-->
+    <button ng-disabled="profile.$invalid"  class="btn btn-lg btn-primary btn-block" type="submit">
+      Submit
+    </button>
+  </form>
+</div>

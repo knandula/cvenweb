@@ -20,9 +20,14 @@ angular.module('cvenApp').config(function($httpProvider,$urlRouterProvider,$stat
       controller: 'LoginCtrl'
     }),
     $stateProvider.state('posts',{
-      url: '/posts',
-      templateUrl: '/views/posts.html',
-      controller: 'PostsCtrl'
+    url: '/posts',
+    templateUrl: '/views/posts.html',
+    controller: 'PostsCtrl'
+  }),
+    $stateProvider.state('profile',{
+      url: '/profile',
+      templateUrl: '/views/profile.html',
+      controller: 'ProfileCtrl'
     }),
     $stateProvider.state('logout',{
       url: '/logout',

@@ -22,25 +22,40 @@
         <div class="panel-heading">
           <h3>{{post.author}}</h3>
           <h5><span> {{post.postedon}}</span> </h5>
+          <button ng-show="validuser(post.author)" ng-click="deletepost(post)">Delete</button>
+          <button ng-show="validuser(post.author)" ng-click="editpost(post)">Edit</button>
         </div>
         <div class="panel-body">
-          <p>{{post.content}}</p>
+          <p ng-hide="editmode">{{post.content}}</p>
+          <textarea name="editposttext" ng-model="editposttext" placeholder="{{post.content}}" ng-show="editmode"></textarea>
+          <button  ng-click="editpost(post,editposttext)" ng-show="editmode">submit</button>
+          <button  ng-click="cancelEdit()" ng-show="editmode">cancel</button>
         </div>
         <div class="panel-footer">
-          <div ng-repeat="comment in post.comments">
+          <div ng-repeat="comment in getcomments(post._id)">
             <div class="panel-heading">
-              <h3>{{comment.author}}</h3>
+              <h6 class="text-muted">{{comment.author}}</h6>
+              <h5 class="text-muted"><span> {{comment.postedon}}</span> </h5>
             </div>
             <div class="panel-body">
-              <p>{{comment.text}}</p>
+              <p ng-hide="editmode" class="text-info">{{comment.commentcontent}}</p>
+
+              <textarea name="editcommenttext" ng-model="editcommenttext" placeholder="{{comment.commentcontent}}" ng-show="editmode"></textarea>
+              <button  ng-click="editcomment(comment,editcommenttext)" ng-show="editmode">submit</button>
+              <button  ng-click="cancelEdit()" ng-show="editmode">cancel</button>
+
+              <button ng-show="validuser(post.author)" ng-click="deletecomment(comment)">Delete</button>
+              <button ng-show="validuser(post.author)" ng-click="editcomment(comment)">Edit</button>
             </div>
           </div>
-          <button type="button" class="[ btn btn-default ]">
-            <span class="[ glyphicon glyphicon-share-alt ]"></span>
-          </button>
-          <div class="panel-google-plus-textarea">
-          <textarea  placeholder="add a comment"></textarea>
           </div>
+        <div class="panel panel-body">
+          <form ng-submit="comment(post._id,commentcontent)" name="postcomment" class="form-signin" novalidate="">
+          <div class="panel-google-plus-textarea">
+          <textarea name="commenttext" ng-model="commentcontent"   placeholder="add a comment"></textarea>
+            <button type="submit">Post </button>
+          </div>
+            </form>
         </div>
       </div>
       </div>

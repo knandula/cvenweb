@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('cvenApp').controller('RegisterCtrl', function ($scope,$rootScope,$http,alert,authToken,APIURL) {
+angular.module('cvenApp').controller('RegisterCtrl', function ($scope,$rootScope,$http,alert,authToken,APIURL,dataservice) {
   $scope.submit = function() {
 
     var url = APIURL + 'register';
@@ -15,6 +15,7 @@ angular.module('cvenApp').controller('RegisterCtrl', function ($scope,$rootScope
       .success(function (res) {
         alert("success",'Account Created !','Welcome , ' + res.user.email + '!');
         authToken.setToken(res.token);
+        dataservice.setUser(res.user);
       })
       .error(function (res) {
         alert("warning",'oops !!','email already exists / could not register');
